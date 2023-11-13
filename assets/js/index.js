@@ -1,3 +1,4 @@
+//
 const questions = [
     {
       category: "Science: Computers",
