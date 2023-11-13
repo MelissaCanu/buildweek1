@@ -80,6 +80,7 @@ li {
   position: relative;
   top: 1px;
 }
+
 #multiplo {
   display: flex;
   flex-direction: column;
