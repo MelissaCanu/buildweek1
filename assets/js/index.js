@@ -1,4 +1,4 @@
-//ajinsdadsbvaviuabvavb
+
 const questions = [
     {
       category: "Science: Computers",
@@ -109,5 +109,5 @@ const questions = [
         window.location.href = "./questionario.html"
   } 
 });
-// bottone che porta al feedback
+
 

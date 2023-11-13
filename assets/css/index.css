@@ -39,7 +39,7 @@ li {
 
 /*+++++++++++++++++ BOTTONI ++++++++++++++++++++++*/
 
-button {
+#button {
     box-shadow: 0px 1px 11px 4px #00ffff;
     background:linear-gradient(to bottom, #00ffff 5%, #00ffff 100%);
     background-color:#00ffff;
@@ -52,13 +52,29 @@ button {
     font-size: 1.2rem;
     font-weight: bold;
 }
-button:hover {
+#button:hover {
     background:linear-gradient(to bottom, #00ffff 5%, #00ffff 100%);
     background-color:#00ffff36;
 }
-button:active {
+#button:active {
     position:relative;
     top:1px;
+}
+#multiplo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.stileBottoni {
+    width: 20rem;
+    height: 4rem;
+    border-radius: 30px;
+    margin: 1em;
+    background-color: transparent;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    border-color: white;
 }
 /*+++++++++++++ FOOTER +++++++++++++++*/
 form{
