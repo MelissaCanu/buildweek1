@@ -67,3 +67,32 @@ form{
     justify-content: space-between;
     align-items: center;
 }
+
+/*+++++++++++++++CHECKBOX +++++++++++++*/
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+label:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2.5px solid white;
+  vertical-align: middle;
+  margin-right: 1em;
+  margin-bottom: 0.2em;
+}
+
+input[type="checkbox"]:checked + label:before {
+  content: "\2713"; /* unicode per la v di checked*/
+  text-align: center;
+  line-height: 15px;
+  color: white;
+}
