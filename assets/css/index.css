@@ -34,12 +34,6 @@ body {
   margin-top: 1rem; /* Increase the margin between the input and button */
 }
 
-#button {
-  width: 100%;
-  padding: 0.5rem; /* Add padding to the button */
-  margin-top: 1rem; /* Increase the margin between the input and button */
-}
-
 /*++++++++++++++++ HEADER +++++++++++++++++++++++*/
 
 #title {
