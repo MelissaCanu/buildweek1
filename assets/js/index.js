@@ -129,9 +129,6 @@ function questionario(question){
   updateQuestionCounter();
 }
 
-let correct = [];
-
-
 function checkRisposta(rispostaSelezionata, rispostaGiusta){
    if(rispostaSelezionata === rispostaGiusta){
     alert ("e' giusto"), correct.push(rispostaSelezionata)
