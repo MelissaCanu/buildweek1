@@ -173,8 +173,6 @@ input[type="checkbox"]:checked + label:before {
   line-height: 15px;
   color: white;
 }
-<<<<<<< Updated upstream
-=======
 
 /*+++++++++++++++++ RESULTS ++++++++++++++++++++++*/
 
@@ -202,4 +200,3 @@ input[type="checkbox"]:checked + label:before {
   fill: #ffcc00;
 }
  */
->>>>>>> Stashed changes
