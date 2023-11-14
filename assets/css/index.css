@@ -102,8 +102,6 @@ li {
   font-family: "Outfit", sans-serif;
   font-weight: bold;
   border-color: white;
-<<<<<<< Updated upstream
-=======
   border: none;
   -webkit-box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
   -moz-box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
@@ -135,7 +133,6 @@ li {
   text-align: center;
   margin-top: 3em;
   margin-bottom: 3em;
->>>>>>> Stashed changes
 }
 /*+++++++++++++ FOOTER +++++++++++++++*/
 form {
@@ -192,11 +189,8 @@ input[type="checkbox"]:checked + label:before {
 
 /*+++++++++++++++++ FEEDBACK ++++++++++++++++++++++*/
 
-/* .star svg path {
-  fill: #5f606e;
-}
+/* colore per le stelle all'hover del mouse */
 
-.star.selected svg path {
-  fill: #ffcc00;
+.star:hover path {
+  fill: #00ffff;
 }
- */
