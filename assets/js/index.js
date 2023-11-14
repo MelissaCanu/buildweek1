@@ -100,7 +100,7 @@ const questions = [
   ];
 
 // bottone che porta alle domande 
-  document.getElementById('button').addEventListener('click', function(event){
+  /*document.getElementById('button').addEventListener('click', function(event){
     event.preventDefault();
     const checkbox = document.getElementById('checkbox_input');
     if(!checkbox.checked){
@@ -109,5 +109,44 @@ const questions = [
         window.location.href = "./questionario.html"
   } 
 });
+*/
+let currentQuestionIndex = 0;
+questionario(questions[currentQuestionIndex]);
+
+function questionario(question){
+  const questionContainer = document.getElementById('container')
+  questionContainer.innerHTML = '';
+
+  const questionElement = document.createElement('div')
+  questionElement.innerHTML = `<p>${question.question}<p>`
+
+  const domande = [...question.incorrect_answers, question.correct_answer]
+  domande.sort(() => Math.random() - 0.5)
+
+  domande.forEach((risposta) => {
+    const button = document.createElement('button')
+    button.classList.add('stileBottoni')
+    button.textContent = risposta
+    button.addEventListener('click', () => checkRisposta(risposta, question.correct_answer))
+    questionElement.appendChild(button)
+  })
+
+  questionContainer.appendChild(questionElement)
+}
+function checkRisposta(rispostaSelezionata, rispostaGiusta){
+   if(rispostaSelezionata === rispostaGiusta){
+    alert("e' giusta")
+   } else {
+    alert ("fai cacare")
+   }
+
+   currentQuestionIndex++
+   if (currentQuestionIndex < questions.length){
+    questionario(questions[currentQuestionIndex])
+   } else {
+    alert ("bravo hai finito, vattene a casa mo")
+   }
+}
 
 
+  
