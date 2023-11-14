@@ -125,10 +125,6 @@ function questionario(question) {
   updateQuestionCounter();
 }
 
-/////////////////////////////////////////////////////////////////
-
-let correctCount = 0;
-let wrongCount = 0;
 
 function calculatePercentage(count, total) {
   return (count / total) * 100;
