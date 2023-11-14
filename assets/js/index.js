@@ -99,27 +99,21 @@ const questions = [
     },
   ];
 
-// bottone che porta alle domande 
-  /*document.getElementById('button').addEventListener('click', function(event){
-    event.preventDefault();
-    const checkbox = document.getElementById('checkbox_input');
-    if(!checkbox.checked){
-        alert("Premi il tasto stronzo")
-    } else {
-        window.location.href = "./questionario.html"
-  } 
-});
-*/
-let currentQuestionIndex = 0;
-questionario(questions[currentQuestionIndex]);
+
+  let currentQuestionIndex = 0;
+  const totalQuestions = questions.length;
+  function updateQuestionCounter() {
+    const questionCounterElement = document.getElementById("questionCounter");
+    questionCounterElement.innerHTML = `Question ${currentQuestionIndex + 1}` + `<span id="numeroColorato">/${totalQuestions}<span>`;
+  }
+
 
 function questionario(question){
   const questionContainer = document.getElementById('container')
   questionContainer.innerHTML = '';
 
   const questionElement = document.createElement('div')
-  questionElement.innerHTML = `<p>${question.question}<p>`
-
+  questionElement.innerHTML = `<p class="stilep">${question.question}<p>`
   const domande = [...question.incorrect_answers, question.correct_answer]
   domande.sort(() => Math.random() - 0.5)
 
@@ -132,21 +126,29 @@ function questionario(question){
   })
 
   questionContainer.appendChild(questionElement)
+  updateQuestionCounter();
 }
+
+let correct = [];
+
+
 function checkRisposta(rispostaSelezionata, rispostaGiusta){
    if(rispostaSelezionata === rispostaGiusta){
-    alert("e' giusta")
+    alert ("e' giusto"), correct.push(rispostaSelezionata)
    } else {
-    alert ("fai cacare")
-   }
+    alert("fai cagare")
+  }
 
    currentQuestionIndex++
-   if (currentQuestionIndex < questions.length){
+   if (currentQuestionIndex < totalQuestions){
     questionario(questions[currentQuestionIndex])
    } else {
-    alert ("bravo hai finito, vattene a casa mo")
+    window.location.href="./results.html"
    }
 }
 
 
-  
+questionario(questions[currentQuestionIndex]);
+
+
+console.log(correct)
