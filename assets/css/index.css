@@ -1,7 +1,7 @@
 /*+++++++++++++++++ IMPOSTAZIONI GENERALI ++++++++++++++++++++++*/
 
 body {
-  background-image: url("/assets/img/bg.jpg");
+  background-image: url("../img/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
