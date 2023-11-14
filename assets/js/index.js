@@ -125,7 +125,7 @@ function questionario(question) {
   updateQuestionCounter();
 }
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 let correctCount = 0;
 let wrongCount = 0;
@@ -179,18 +179,7 @@ function checkRisposta(rispostaSelezionata, rispostaGiusta) {
 
 questionario(questions[currentQuestionIndex]);
 
-////////////////////////////////////////////////////////////////////
 
-// bottone che porta alle domande
-/* document.getElementById("button").addEventListener("click", function (event) {
-  event.preventDefault();
-  const checkbox = document.getElementById("checkbox_input");
-  if (!checkbox.checked) {
-    alert("Premi il tasto stronzo");
-  } else {
-    window.location.href = "./questionario.html";
-  }
-}); */
 
 var seconds = 60;
 var anglePerSecond = 360 / seconds;
