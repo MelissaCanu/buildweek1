@@ -102,6 +102,40 @@ li {
   font-family: "Outfit", sans-serif;
   font-weight: bold;
   border-color: white;
+<<<<<<< Updated upstream
+=======
+  border: none;
+  -webkit-box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
+  box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
+  cursor: pointer;
+  font-size: 1em;
+}
+.stileBottoni:hover {
+  background: rgb(119, 1, 93);
+  background: linear-gradient(0deg, rgba(119, 1, 93, 1) 0%, rgba(210, 0, 148, 1) 100%);
+}
+/*+++++++++++++++++++ DOMANDE +++++++++++++++++++++*/
+.stilep {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 2em;
+  font-family: "Outfit", sans-serif;
+}
+#container {
+  align-items: center;
+  margin: 0 25%;
+  text-align: center;
+}
+#numeroColorato {
+  color: #d20094;
+}
+#questionCounter {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+>>>>>>> Stashed changes
 }
 /*+++++++++++++ FOOTER +++++++++++++++*/
 form {
@@ -139,3 +173,33 @@ input[type="checkbox"]:checked + label:before {
   line-height: 15px;
   color: white;
 }
+<<<<<<< Updated upstream
+=======
+
+/*+++++++++++++++++ RESULTS ++++++++++++++++++++++*/
+
+#rateUs {
+  box-shadow: 0px 1px 11px 4px #00ffff;
+  background-color: transparent;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid white;
+  width: 12rem;
+  height: 3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+/*+++++++++++++++++ FEEDBACK ++++++++++++++++++++++*/
+
+/* .star svg path {
+  fill: #5f606e;
+}
+
+.star.selected svg path {
+  fill: #ffcc00;
+}
+ */
+>>>>>>> Stashed changes
