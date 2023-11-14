@@ -19,7 +19,11 @@
       alt="Logo epicode_logo"
     />
     <header>
+<<<<<<< Updated upstream
       <h1 id="title"><span>Welcome to</span><br/>your exam</h1>
+=======
+      <h1 class="title"><span>Welcome to</span><br />your exam</h1>
+>>>>>>> Stashed changes
     </header>
     <main>
       <p id="istruzioni">Instructions</p>
@@ -46,6 +50,17 @@
         </div>
       </form>
     </main>
-    <script src="./assets/js/index.js"></script>
+    <script>
+      // bottone che porta alle domande
+  document.getElementById("button").addEventListener("click", function (event) {
+  event.preventDefault();
+  const checkbox = document.getElementById("checkbox_input");
+  if (!checkbox.checked) {
+    alert("Premi il tasto stronzo");
+  } else {
+    window.location.href = "./questionario.html";
+  }
+}); 
+    </script>
   </body>
 </html>
