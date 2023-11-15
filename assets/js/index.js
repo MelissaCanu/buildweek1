@@ -208,3 +208,15 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 }
 
 questionario(questions[currentQuestionIndex]);
+
+const quizPageElement = document.getElementById("quizPage");
+
+if (quizPageElement) {
+  window.addEventListener("mouseout", function (event) {
+    const from = event.relatedTarget || event.toElement;
+
+if (!from || (event.clientY <= 0 || event.clientX <= 0 || event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
+    alert("We merdina non barare, ti osservo :)");
+  }
+ });
+}
