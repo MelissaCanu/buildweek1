@@ -301,5 +301,7 @@ text-indent: 4.5%;
 }
 /* Aggiungi questa regola CSS per l'animazione del cerchio */
 .progress-circle {
-  transition: r 1s ease-in-out;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
 }

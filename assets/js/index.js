@@ -100,6 +100,8 @@ let correctCount = 0;
 let wrongCount = 0;
 let seconds = 60;
 let timerInterval;
+let progressCircle;
+let circleLength;
 
 function calculatePercentage(count, total) {
   return (count / total) * 100;
@@ -118,7 +120,11 @@ function questionario(question) {
 
   const questionElement = document.createElement("div");
   questionElement.innerHTML = `<p class="stilep">${question.question}<p>`;
+  
+  progressCircle = document.querySelector(".progress-circle");
 
+  circleLength = 2 * Math.PI * parseInt(progressCircle.getAttribute("r"));
+  
   const domande = [...question.incorrect_answers, question.correct_answer];
   domande.sort(() => Math.random() - 0.5);
   domande.forEach((risposta) => {
@@ -140,6 +146,10 @@ function questionario(question) {
 function startTimer() {
   seconds = 60;
 
+  // Imposta l'offset iniziale al massimo per avere un cerchio pieno
+  progressCircle.style.strokeDashoffset = 0;
+
+  // Cancella l'intervallo precedente (se presente)
   clearInterval(timerInterval);
 
   timerInterval = setInterval(function () {
@@ -147,12 +157,21 @@ function startTimer() {
 
     document.querySelector("text").textContent = seconds;
 
+    // Calcola e imposta l'offset in base al tempo rimasto
+    var newDashOffset = (60 - seconds) * (circleLength / 60);
+    progressCircle.style.strokeDashoffset = newDashOffset;
+
+    // Calcola e imposta l'opacità in base al tempo rimasto
+    var opacity = seconds / 60; // da completamente opaco (1) a completamente trasparente (0)
+    progressCircle.style.strokeOpacity = opacity;
+
     if (seconds <= 0) {
       clearInterval(timerInterval);
       handleTimeout();
     }
   }, 1000);
 }
+
 
 function handleTimeout() {
   checkAnswer(""); 
