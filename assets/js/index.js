@@ -203,4 +203,4 @@ var timerInterval = setInterval(function () {
     clearInterval(timerInterval);
     alert("Il tempo è scaduto!");
   }
-}, 1000);
+}, 1000); //
