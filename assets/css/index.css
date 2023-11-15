@@ -186,19 +186,18 @@ input[type="checkbox"]:checked + label:before {
 #rateUs {
   box-shadow: 0px 1px 11px 4px #00ffff;
   background-color: transparent;
-  display: inline-block;
   cursor: pointer;
   border: 2px solid white;
   width: 12rem;
   height: 3rem;
-  font-family: "Inter", sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
 }
 
 .diGravita{
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 0;
 }
 
@@ -251,7 +250,8 @@ p.diGravita {
 }
 
 #star-container .star {
-  margin-right: 0.6rem
+  margin-right: 0.6rem;
+  cursor: pointer;
 }
 
 /* colore per le stelle all'hover del mouse */
@@ -298,4 +298,27 @@ text-indent: 4.5%;
 
 .feedbackBtn{
   margin-bottom:6rem;
+}
+
+
+/*++++++++++++++++++ RESULTS +++++++++++++++++++++++++++*/
+
+#resulstCenter {
+  text-align: center;
+  margin-top: 7em;
+  padding-right: 2em;
+}
+
+#blue {
+  color: #00ffff;
+}
+
+#wiolet {
+  color: #d20094;
+}
+
+#resulstCenter p {
+  font-weight:lighter ;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
 }

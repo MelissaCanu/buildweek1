@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <title>Risultato</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   </head>
   <body>
     <img
@@ -31,28 +32,36 @@
       >
     </div>
     <script>
-      var correctPercentage = localStorage.getItem("correctPercentage");
-      var wrongPercentage = localStorage.getItem("wrongPercentage"); // porta i valori da questionario a results
-      var correctCount = localStorage.getItem("correctCount");
-      var wrongCount = localStorage.getItem("wrongCount");
+      document.addEventListener("DOMContentLoaded", function () {
+        var correctPercentage = localStorage.getItem("correctPercentage");
+        var wrongPercentage = localStorage.getItem("wrongPercentage"); // porta i valori da questionario a results
+        var correctCount = localStorage.getItem("correctCount");
+        var wrongCount = localStorage.getItem("wrongCount");
+        var gradientColor = `linear-gradient(90deg, #00ffff ${correctPercentage}%, #9c29c2 ${correctPercentage}% 100%)`;
 
-      document.getElementById("wrong").innerHTML = `
+        document.getElementById("wrong").innerHTML = `
             <p>Wrong<br> <b>${wrongPercentage}%</b><br>${wrongCount}/10</p>
         `;
-      document.getElementById("correct").innerHTML = `
+        document.getElementById("correct").innerHTML = `
 
       <p>Correct <br><b> ${correctPercentage}%</b><br>${correctCount}/10</p>
-`;
+      `;
+        var cerchioStrano = document.getElementById("cerchioStrano");
 
-      if (wrongCount > correctCount) {
-        console.log(wrongCount);
-        document.getElementById("cerchioStrano").innerHTML = `
-            <p>Studia capra</p>`;
-      } else {
-        console.log(correctCount);
-        document.getElementById("cerchioStrano").innerHTML = `
-            <p>Hai passato</p>`;
-      }
+        if (wrongCount > correctCount) {
+          cerchioStrano.textContent = `Studia capra`;
+        } else {
+          cerchioStrano.textContent = `Hai passato`;
+        }
+      });
     </script>
   </body>
 </html>
+
+<!--var correctPercentage = localStorage.getItem("correctPercentage");
+var wrongPercentage = localStorage.getItem("wrongPercentage"); // porta i valori da questionario a results
+var correctCount = localStorage.getItem("correctCount");
+var wrongCount = localStorage.getItem("wrongCount");
+var xValues = ["correct", "wrong"];
+var yValues = [correctCount, wrongCount];
+var barColors = ["#b91d47", "#00aba9"]; -->
