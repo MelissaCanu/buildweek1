@@ -153,6 +153,8 @@ function updateScoreCounter() {
     // salva i risultati in un "localStorage"?? che cazzo e'??? per spostarli in un altra pagina html
     localStorage.setItem("correctPercentage", correctPercentage);
     localStorage.setItem("wrongPercentage", wrongPercentage);
+    localStorage.setItem("correctCount", correctCount);
+    localStorage.setItem("wrongCount", wrongCount);
 
     window.location.href = `./results.html`;
     return;
@@ -178,8 +180,6 @@ function checkRisposta(rispostaSelezionata, rispostaGiusta) {
 }
 
 questionario(questions[currentQuestionIndex]);
-
-
 
 var seconds = 60;
 var anglePerSecond = 360 / seconds;
