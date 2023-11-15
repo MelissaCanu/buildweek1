@@ -12,6 +12,7 @@
     />
     <title>Risultato</title>
   </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <body>
     <img
       id="Logo"
@@ -22,7 +23,7 @@
     <p class="diGravita">The summary of your answers:</p>
     <div id="resultsContainer">
       <div id="correct" class="results"></div>
-      <div id="cerchioStrano"></div>
+      <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
       <div id="wrong" class="results"></div>
     </div>
     <div class="diGravita">
@@ -36,6 +37,62 @@
       var correctCount = localStorage.getItem("correctCount");
       var wrongCount = localStorage.getItem("wrongCount");
 
+      var xValues = ["WRONG", "CORRECT"];
+      var yValues = [wrongCount,correctCount];
+      var barColors = [
+        "#c2128d",
+        "#00ffff",
+];
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues,
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018"
+    },
+    legend: {
+      display: false // Nascondi la legenda
+    },
+    tooltips: {
+      enabled: false // Disabilita i tooltip
+    },
+    
+    cutoutPercentage: 80, // Aumenta questo valore per rendere il foro più grande
+    maintainAspectRatio: false, // Permette la dimensione del canvas adattabile
+    responsive: true, // Rendi il grafico responsive
+    centerText: "Center Text", // Static text at the center
+    plugins: {
+      afterDraw: function (chart) {
+        var width = chart.chart.width;
+        var height = chart.chart.height;
+        var ctx = chart.chart.ctx;
+        // Draw center text
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#000'; // Text color
+        ctx.font = '20px Arial'; // Text font
+        ctx.fillText(chart.options.centerText, width / 2, height / 2);
+      }
+    },
+    scales: {
+      xAxes: [{
+        display: false, // Nascondi l'asse X
+      }],
+      yAxes: [{
+        display: false, // Nascondi l'asse Y
+      }]
+    }
+  }
+  
+});
       document.getElementById("wrong").innerHTML = `
             <p>Wrong<br> <b>${wrongPercentage}%</b><br>${wrongCount}/10</p>
         `;
@@ -46,11 +103,11 @@
 
       if (wrongCount > correctCount) {
         console.log(wrongCount);
-        document.getElementById("cerchioStrano").innerHTML = `
+        document.getElementById("myChart").innerHTML = `
             <p>Studia capra</p>`;
       } else {
         console.log(correctCount);
-        document.getElementById("cerchioStrano").innerHTML = `
+        document.getElementById("myChart").innerHTML = `
             <p>Hai passato</p>`;
       }
     </script>
