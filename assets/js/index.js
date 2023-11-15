@@ -100,8 +100,6 @@ let correctCount = 0;
 let wrongCount = 0;
 let seconds = 60;
 let timerInterval;
-let progressCircle;
-let circleLength;
 
 function calculatePercentage(count, total) {
   return (count / total) * 100;
@@ -120,11 +118,7 @@ function questionario(question) {
 
   const questionElement = document.createElement("div");
   questionElement.innerHTML = `<p class="stilep">${question.question}<p>`;
-  
-  progressCircle = document.querySelector(".progress-circle");
 
-  circleLength = 2 * Math.PI * parseInt(progressCircle.getAttribute("r"));
-  
   const domande = [...question.incorrect_answers, question.correct_answer];
   domande.sort(() => Math.random() - 0.5);
   domande.forEach((risposta) => {
@@ -140,14 +134,12 @@ function questionario(question) {
   questionContainer.appendChild(questionElement);
   updateQuestionCounter();
 
+  // Avvia il timer per la nuova domanda
   startTimer();
 }
 
 function startTimer() {
   seconds = 60;
-
-  // Imposta l'offset iniziale al massimo per avere un cerchio pieno
-  progressCircle.style.strokeDashoffset = 0;
 
   // Cancella l'intervallo precedente (se presente)
   clearInterval(timerInterval);
@@ -157,8 +149,7 @@ function startTimer() {
 
     document.querySelector("text").textContent = seconds;
 
-    // Calcola e imposta l'offset in base al tempo rimasto
-    var newDashOffset = (60 - seconds) * (circleLength / 60);
+    var newDashOffset = circleLength - dashOffsetPerSecond * (seconds - 1);
     progressCircle.style.strokeDashoffset = newDashOffset;
 
     // Calcola e imposta l'opacità in base al tempo rimasto
@@ -172,9 +163,8 @@ function startTimer() {
   }, 1000);
 }
 
-
 function handleTimeout() {
-  checkAnswer(""); 
+  checkAnswer(""); // Chiamata alla funzione per gestire la risposta quando scade il tempo
 }
 
 function updateScoreCounter() {
@@ -189,14 +179,14 @@ function updateScoreCounter() {
     localStorage.setItem("correctCount", correctCount);
     localStorage.setItem("wrongCount", wrongCount);
 
-    clearInterval(timerInterval); 
+    clearInterval(timerInterval); // Cancella l'intervallo quando tutte le domande sono state completate
     window.location.href = `./results.html`;
     return;
   }
 }
 
 function checkAnswer(selectedAnswer, correctAnswer) {
-  clearInterval(timerInterval);
+  clearInterval(timerInterval); // Cancella l'intervallo quando l'utente risponde a una domanda
 
   if (selectedAnswer === correctAnswer) {
     correctCount++;
