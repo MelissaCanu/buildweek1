@@ -279,3 +279,82 @@ p.diGravita {
   font-size: 2em;
   margin-top: 5px;
 }
+
+/*+++++++++++++++++ FEEDBACK ++++++++++++++++++++++*/
+
+/* stili generali feedback */
+
+#formFeedback {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feedbackH1, .feedbackP {
+  text-align: center;
+}
+
+.feedbackH1 {
+  margin-top:5rem;
+}
+
+.feedbackP {
+  font-size:30px;
+  margin-bottom:30px;
+}
+
+#star-container {
+  margin-bottom: 3rem;
+}
+
+#star-container .star {
+  margin-right: 0.6rem
+}
+
+/* colore per le stelle all'hover del mouse */
+
+.star:hover path {
+  fill: #00ffff;
+}
+
+/*  stile input feedback */
+
+.feedbackInput {
+  width: 70%;
+  border: none;
+  border-bottom: 2px solid #9c29c2;
+  background: transparent;
+  color: #5f606e;
+  margin-top:0.5rem;
+  margin-bottom: 2.5rem;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/* stile placeholder dell'input feedback  e del text che scriviamo dentro */
+
+
+.feedbackInput::placeholder{
+font-size: 1.2rem;
+text-indent: 4.5%;
+}
+
+.feedbackInput[type="text"]{
+  text-indent: 4.5%;
+  color: #7b7c8f;
+  font-size: larger;
+}
+
+/* tolgo il bordo bianco intorno all'input feedback quando cliccato */
+
+.feedbackInput:focus {
+  outline: none; /
+}
+
+/* aggiungo margin bottom al bottone del feedback */
+
+.feedbackBtn{
+  margin-bottom:6rem;
+}
