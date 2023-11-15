@@ -165,7 +165,7 @@ function checkRisposta(rispostaSelezionata, rispostaGiusta) {
   if (rispostaSelezionata === rispostaGiusta) {
     correctCount++;
   } else {
-    window.location.href = "./questionario.html";
+    wrongCount++;
   }
 
   currentQuestionIndex++;

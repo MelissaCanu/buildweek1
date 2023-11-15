@@ -107,6 +107,42 @@ li {
   font-family: "Outfit", sans-serif;
   font-weight: bold;
   border-color: white;
+  border: none;
+  -webkit-box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
+  box-shadow: 0px -2px 1px 1px rgba(255, 255, 255, 1);
+  cursor: pointer;
+  font-size: 1em;
+}
+.stileBottoni:hover {
+  background: rgb(119, 1, 93);
+  background: linear-gradient(
+    0deg,
+    rgba(119, 1, 93, 1) 0%,
+    rgba(210, 0, 148, 1) 100%
+  );
+}
+/*+++++++++++++++++++ DOMANDE +++++++++++++++++++++*/
+.stilep {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 2em;
+  margin-top: 0;
+  font-family: "Outfit", sans-serif;
+}
+#container {
+  align-items: center;
+  margin: 0 25%;
+  text-align: center;
+}
+#numeroColorato {
+  color: #d20094;
+}
+#questionCounter {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 /*+++++++++++++ FOOTER +++++++++++++++*/
 form {
@@ -143,101 +179,6 @@ input[type="checkbox"]:checked + label:before {
   text-align: center;
   line-height: 15px;
   color: white;
-}
-
-/*+++++++++++++++++ RESULTS ++++++++++++++++++++++*/
-
-#rateUs {
-  box-shadow: 0px 1px 11px 4px #00ffff;
-  background-color: transparent;
-  display: inline-block;
-  cursor: pointer;
-  border: 2px solid white;
-  width: 12rem;
-  height: 3rem;
-  font-family: "Inter", sans-serif;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-}
-
-/*+++++++++++++++++ FEEDBACK ++++++++++++++++++++++*/
-
-/* stili generali feedback */
-
-#formFeedback {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.feedbackH1, .feedbackP {
-  text-align: center;
-}
-
-.feedbackH1 {
-  margin-top:5rem;
-}
-
-.feedbackP {
-  font-size:30px;
-  margin-bottom:30px;
-}
-
-#star-container {
-  margin-bottom: 3rem;
-}
-
-#star-container .star {
-  margin-right: 0.6rem
-}
-
-/* colore per le stelle all'hover del mouse */
-
-.star:hover path {
-  fill: #00ffff;
-}
-
-/*  stile input feedback */
-
-.feedbackInput {
-  width: 70%;
-  border: none;
-  border-bottom: 2px solid #9c29c2;
-  background: transparent;
-  color: #5f606e;
-  margin-top:0.5rem;
-  margin-bottom: 2.5rem;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-/* stile placeholder dell'input feedback  e del text che scriviamo dentro */
-
-
-.feedbackInput::placeholder{
-font-size: 1.2rem;
-text-indent: 4.5%;
-}
-
-.feedbackInput[type="text"]{
-  text-indent: 4.5%;
-  color: #7b7c8f;
-  font-size: larger;
-}
-
-/* tolgo il bordo bianco intorno all'input feedback quando cliccato */
-
-.feedbackInput:focus {
-  outline: none; /
-}
-
-/* aggiungo margin bottom al bottone del feedback */
-
-.feedbackBtn{
-  margin-bottom:6rem;
 }
 
 /*+++++++++++++++++ RESULTS ++++++++++++++++++++++*/
