@@ -117,34 +117,9 @@
         </span>
       </div>
 
-      <p class="feedbackP">Leave us an open feedback about your experience so far</p>
-      <input class="feedbackInput" type="text" placeholder="Write your comment here" />
-      <button id="button" class="feedbackBtn" type="submit">MORE INFO</button>
-    </form>
-    <script>
-      // dom content loaded significa che js si implementa quando html è caricato e renderizzato completamente
-      document.addEventListener("DOMContentLoaded", function () {
-        const stars = document.querySelectorAll(".star");
-
-        // ho creato la costante stars per estrarre con querySelectorAll la singola stella
-        // adesso faccio un forEach con un addeventlistener per far sì che al click di una stella anche le precedenti diventino azzurre
-        stars.forEach(function (star, index) {
-          star.addEventListener("click", function () {
-            for (let i = 0; i <= index; i++) {
-              stars[i].classList.add("selected");
-              const pathElement = stars[i].querySelector("path");
-              pathElement.setAttribute("fill", "#00ffff");
-            }
-
-            // le stelle dopo quella selezionata saranno unselected, con il colore di default inserito nel valore "fill" -> valore del <path> dentro al percorso <svg> del file .svg che contiene l'immagine della stellina fornitaci in consegna
-            for (let i = index + 1; i < stars.length; i++) {
-              stars[i].classList.remove("selected");
-              const pathElement = stars[i].querySelector("path");
-              pathElement.setAttribute("fill", "grey");
-            }
-          });
-        });
-      });
-    </script>
+    <p>Leave us an open feedback about your experience so far</p>
+    <input type="text" placeholder="Write your comment here" />
+    <button>MORE INFO</button>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>

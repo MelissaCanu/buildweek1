@@ -1,4 +1,3 @@
-
 const questions = [
   {
     category: "Science: Computers",
@@ -83,83 +82,8 @@ const questions = [
   },
 ];
 
-let currentQuestionIndex = 0;
-const totalQuestions = questions.length;
-function updateQuestionCounter() {
-  const questionCounterElement = document.getElementById("questionCounter");
-  questionCounterElement.innerHTML =
-    `Question ${currentQuestionIndex + 1}` + `<span id="numeroColorato">/${totalQuestions}<span>`;
-}
-
-
-  const questionElement = document.createElement("div");
-  questionElement.innerHTML = `<p class="stilep">${question.question}<p>`;
-
-  const domande = [...question.incorrect_answers, question.correct_answer];
-  domande.sort(() => Math.random() - 0.5);
-  domande.forEach((risposta) => {
-    const button = document.createElement("button");
-    button.classList.add("stileBottoni");
-    button.textContent = risposta;
-    button.addEventListener("click", () => checkRisposta(risposta, question.correct_answer));
-    questionElement.appendChild(button);
-  });
-  questionContainer.appendChild(questionElement);
-  updateQuestionCounter();
-}
-
-/////////////////////////////////////////////////////////////////
-
-let correctCount = 0;
-let wrongCount = 0;
-
-function calculatePercentage(count, total) {
-  return (count / total) * 100;
-}
-
-function updateScoreCounter() {
-  const scoreCounterElement = document.getElementById("scoreCounter");
-
-  const correctPercentage = calculatePercentage(correctCount, currentQuestionIndex);
-  const wrongPercentage = calculatePercentage(wrongCount, currentQuestionIndex);
-
-  if (currentQuestionIndex === questions.length) {
-    const correctPercentage = calculatePercentage(correctCount, questions.length);
-    const wrongPercentage = calculatePercentage(wrongCount, questions.length);
-
-    // salva i risultati in un "localStorage"?? che cazzo e'??? per spostarli in un altra pagina html
-    localStorage.setItem("correctPercentage", correctPercentage);
-    localStorage.setItem("wrongPercentage", wrongPercentage);
-
-    window.location.href = `./results.html`;
-    return;
-  }
-}
-
-function checkRisposta(rispostaSelezionata, rispostaGiusta) {
-  if (rispostaSelezionata === rispostaGiusta) {
-    correctCount++;
-  } else {
-    wrongCount++;
-  }
-
-  currentQuestionIndex++;
-
-  if (currentQuestionIndex < questions.length) {
-    questionario(questions[currentQuestionIndex]);
-  } else {
-    updateScoreCounter();
-    window.location.href = "./results.html";
-  }
-  updateScoreCounter();
-}
-
-questionario(questions[currentQuestionIndex]);
-
-////////////////////////////////////////////////////////////////////
-
 // bottone che porta alle domande
-/* document.getElementById("button").addEventListener("click", function (event) {
+document.getElementById("button").addEventListener("click", function (event) {
   event.preventDefault();
   const checkbox = document.getElementById("checkbox_input");
   if (!checkbox.checked) {
@@ -167,30 +91,4 @@ questionario(questions[currentQuestionIndex]);
   } else {
     window.location.href = "./questionario.html";
   }
-}); */
-
-var seconds = 60;
-var anglePerSecond = 360 / seconds;
-var progressCircle = document.querySelector(".progress-circle");
-var circleLength = 2 * Math.PI * parseInt(progressCircle.getAttribute("r"));
-var dashOffsetPerSecond = circleLength / seconds;
-
-var timerInterval = setInterval(function () {
-  seconds--;
-
-  document.querySelector("text").textContent = seconds;
-
-  var newDashOffset = circleLength - dashOffsetPerSecond * (seconds - 1);
-  progressCircle.style.strokeDashoffset = newDashOffset;
-
-  // Calcola e imposta l'opacità in base al tempo rimasto
-  var opacity = seconds / 60; // da completamente opaco (1) a completamente trasparente (0)
-  progressCircle.style.strokeOpacity = opacity;
-
-  if (seconds <= 0) {
-    clearInterval(timerInterval);
-    alert("Il tempo è scaduto!");
-  }
-}, 1000);
-
-/* +++++++++++++++++ FEEDBACK +++++++++++++++++ */
+});

@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Risultato</title>
-</head>
-<body>
-        <img id="Logo" src="./assets/img/epicode_logo.png" alt="Logo epicode_logo">
-    <h1>Results:</h1>
-    <p>The summary of your answers:</p>
-    <div id="correct"></div>
-    <div id="wrong"></div>
-    <div id="cerchioStrano"></div>
-    <a href="./feedback.html"><button id="rateUs" type="submit">RATE US</button></a>
-    <script src="./assets/js/index.js"></script>
-</body>
+  </head>
+  <body>
+    <img
+      id="Logo"
+      src="./assets/img/epicode_logo.png"
+      alt="Logo epicode_logo"
+    />
+    <h1 class="diGravita title" >Results</h1>
+    <p class="diGravita">The summary of your answers:</p>
+    <div id="resultsContainer">
+      <div id="correct" class="results"></div>
+      <div id="cerchioStrano"></div>
+      <div id="wrong" class="results"></div>
+    </div>
+    <div class="diGravita">
+    <a href="./feedback.html"
+      ><button id="rateUs" type="submit">RATE US</button></a
+    ></div>
+    <script>
+      var correctPercentage = localStorage.getItem("correctPercentage");
+      var wrongPercentage = localStorage.getItem("wrongPercentage"); // porta i valori da questionario a results
+
+      document.getElementById("wrong").innerHTML = `
+            <p>Wrong<br> <b>${wrongPercentage}%</b></p>
+        `;
+      document.getElementById("correct").innerHTML = `
+
+      <p>Correct <br><b> ${correctPercentage}%</b></p>
+`;
+    </script>
+  </body>
 </html>

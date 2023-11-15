@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Pagina vuota</title>
-</head>
-<body>
-        <img id="Logo" src="./assets/img/epicode_logo.png" alt="Logo epicode_logo">
-    <h1 id="Domanda"></h1>
-    <div id="multiplo">
-       <div>
-          <button id="risposta1" class="stileBottoni"></button>
-          <button id="risposta2"  class="stileBottoni"></button>
-       </div>
-       <div>
-          <button id="risposta3"  class="stileBottoni"></button>
-          <button id="risposta4" class="stileBottoni"></button>
-       </div>
+  </head>
+  <body>
+    <div class="logo-timer-container">
+      <img
+        id="Logo"
+        src="./assets/img/epicode_logo.png"
+        alt="Logo epicode_logo"
+      />
+      <div class="timer-container">
+        <div id="timer" class="timer">
+          <svg class="circle" width="200" height="200">
+            <defs>
+              <clipPath id="clip">
+                <circle class="clip-circle" r="50" cx="100" cy="100" />
+              </clipPath>
+            </defs>
+            <circle
+              class="progress-circle"
+              fill="transparent"
+              stroke="#00FFFF"
+              stroke-width="13"
+              r="50"
+              cx="100"
+              cy="100"
+              clip-path="url(#clip)"
+            />
+            <text
+              id="timerText"
+              x="50%"
+              y="50%"
+              text-anchor="middle"
+              dy="0.3em"
+              font-size="20"
+              fill="white"
+            >
+              60
+            </text>
+          </svg>
+        </div>
+      </div>
     </div>
-    <div id="booleano">
-        <input type="checkbox" id="true">
-        <input type="checkbox" id="false">
-    </div>
+    <div id="container"></div>
+    <div id="questionCounter">Question 1/10</div>
     <script src="./assets/js/index.js"></script>
-</body>
+  </body>
 </html>
