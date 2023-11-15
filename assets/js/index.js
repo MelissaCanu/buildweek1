@@ -179,11 +179,22 @@ function updateScoreCounter() {
 function checkAnswer(selectedAnswer, correctAnswer) {
   clearInterval(timerInterval);
 
+  const feedbackContainer = document.getElementById("feedbackContainer");
+  feedbackContainer.innerHTML = "";
+
+  const feedbackElement = document.createElement("div");
+
   if (selectedAnswer === correctAnswer) {
+    feedbackElement.textContent = "Correct answer!",
+    feedbackElement.classList.add("correct-feedback"),
     correctCount++;
   } else {
+    feedbackElement.textContent = "Wrong answer. The correct answer was: " + correctAnswer,
+    feedbackElement.classList.add("wrong-feedback"),
     wrongCount++;
   }
+
+  feedbackContainer.appendChild(feedbackElement);
 
   currentQuestionIndex++;
 

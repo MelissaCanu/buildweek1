@@ -305,3 +305,15 @@ text-indent: 4.5%;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1s linear;
 }
+.correct-feedback {
+  color: green;
+}
+
+.wrong-feedback {
+  color: red;
+}
+
+#feedbackContainer{
+  text-align: center;
+  margin-top: 2em;
+}
