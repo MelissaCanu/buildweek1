@@ -96,6 +96,15 @@ const questions = [
 
 let currentQuestionIndex = 0;
 const totalQuestions = questions.length;
+let correctCount = 0;
+let wrongCount = 0;
+let seconds = 60;
+let timerInterval;
+
+function calculatePercentage(count, total) {
+  return (count / total) * 100;
+}
+
 function updateQuestionCounter() {
   const questionCounterElement = document.getElementById("questionCounter");
   questionCounterElement.innerHTML =
@@ -117,52 +126,69 @@ function questionario(question) {
     button.classList.add("stileBottoni");
     button.textContent = risposta;
     button.addEventListener("click", () =>
-      checkRisposta(risposta, question.correct_answer)
+      checkAnswer(risposta, question.correct_answer),
     );
     questionElement.appendChild(button);
   });
+
   questionContainer.appendChild(questionElement);
   updateQuestionCounter();
+
+  // Avvia il timer per la nuova domanda
+  startTimer();
 }
 
-///////////////////////////////////////////////////////////////////
+function startTimer() {
+  seconds = 60;
 
-let correctCount = 0;
-let wrongCount = 0;
+  // Cancella l'intervallo precedente (se presente)
+  clearInterval(timerInterval);
 
-function calculatePercentage(count, total) {
-  return (count / total) * 100;
+  timerInterval = setInterval(function () {
+    seconds--;
+
+    document.querySelector("text").textContent = seconds;
+
+    var newDashOffset = circleLength - dashOffsetPerSecond * (seconds - 1);
+    progressCircle.style.strokeDashoffset = newDashOffset;
+
+    // Calcola e imposta l'opacità in base al tempo rimasto
+    var opacity = seconds / 60; // da completamente opaco (1) a completamente trasparente (0)
+    progressCircle.style.strokeOpacity = opacity;
+
+    if (seconds <= 0) {
+      clearInterval(timerInterval);
+      handleTimeout();
+    }
+  }, 1000);
+}
+
+function handleTimeout() {
+  checkAnswer(""); // Chiamata alla funzione per gestire la risposta quando scade il tempo
 }
 
 function updateScoreCounter() {
   const scoreCounterElement = document.getElementById("scoreCounter");
 
-  const correctPercentage = calculatePercentage(
-    correctCount,
-    currentQuestionIndex
-  );
-  const wrongPercentage = calculatePercentage(wrongCount, currentQuestionIndex);
+  const correctPercentage = calculatePercentage(correctCount, totalQuestions);
+  const wrongPercentage = calculatePercentage(wrongCount, totalQuestions);
 
   if (currentQuestionIndex === questions.length) {
-    const correctPercentage = calculatePercentage(
-      correctCount,
-      questions.length
-    );
-    const wrongPercentage = calculatePercentage(wrongCount, questions.length);
-
-    // salva i risultati in un "localStorage"?? che cazzo e'??? per spostarli in un altra pagina html
     localStorage.setItem("correctPercentage", correctPercentage);
     localStorage.setItem("wrongPercentage", wrongPercentage);
     localStorage.setItem("correctCount", correctCount);
     localStorage.setItem("wrongCount", wrongCount);
 
+    clearInterval(timerInterval); // Cancella l'intervallo quando tutte le domande sono state completate
     window.location.href = `./results.html`;
     return;
   }
 }
 
-function checkRisposta(rispostaSelezionata, rispostaGiusta) {
-  if (rispostaSelezionata === rispostaGiusta) {
+function checkAnswer(selectedAnswer, correctAnswer) {
+  clearInterval(timerInterval); // Cancella l'intervallo quando l'utente risponde a una domanda
+
+  if (selectedAnswer === correctAnswer) {
     correctCount++;
   } else {
     wrongCount++;
@@ -180,27 +206,3 @@ function checkRisposta(rispostaSelezionata, rispostaGiusta) {
 }
 
 questionario(questions[currentQuestionIndex]);
-
-var seconds = 60;
-var anglePerSecond = 360 / seconds;
-var progressCircle = document.querySelector(".progress-circle");
-var circleLength = 2 * Math.PI * parseInt(progressCircle.getAttribute("r"));
-var dashOffsetPerSecond = circleLength / seconds;
-
-var timerInterval = setInterval(function () {
-  seconds--;
-
-  document.querySelector("text").textContent = seconds;
-
-  var newDashOffset = circleLength - dashOffsetPerSecond * (seconds - 1);
-  progressCircle.style.strokeDashoffset = newDashOffset;
-
-  // Calcola e imposta l'opacità in base al tempo rimasto
-  var opacity = seconds / 60; // da completamente opaco (1) a completamente trasparente (0)
-  progressCircle.style.strokeOpacity = opacity;
-
-  if (seconds <= 0) {
-    clearInterval(timerInterval);
-    alert("Il tempo è scaduto!");
-  }
-}, 1000); //
