@@ -18,27 +18,41 @@
       src="./assets/img/epicode_logo.png"
       alt="Logo epicode_logo"
     />
-    <h1>Results:</h1>
-    <p>The summary of your answers:</p>
+    <h1 class="diGravita title">Results</h1>
+    <p class="diGravita">The summary of your answers:</p>
     <div id="resultsContainer">
-      <div id="wrong"></div>
+      <div id="correct" class="results"></div>
       <div id="cerchioStrano"></div>
-      <div id="correct"></div>
+      <div id="wrong" class="results"></div>
     </div>
-    <a href="./feedback.html"
-      ><button id="rateUs" type="submit">RATE US</button></a
-    >
+    <div class="diGravita">
+      <a href="./feedback.html"
+        ><button id="rateUs" type="submit">RATE US</button></a
+      >
+    </div>
     <script>
       var correctPercentage = localStorage.getItem("correctPercentage");
       var wrongPercentage = localStorage.getItem("wrongPercentage"); // porta i valori da questionario a results
+      var correctCount = localStorage.getItem("correctCount");
+      var wrongCount = localStorage.getItem("wrongCount");
 
       document.getElementById("wrong").innerHTML = `
-            <p>Wrong: ${wrongPercentage}%</p>
+            <p>Wrong<br> <b>${wrongPercentage}%</b><br>${wrongCount}/10</p>
         `;
       document.getElementById("correct").innerHTML = `
 
-      <p>Correct: ${correctPercentage}%</p>;
+      <p>Correct <br><b> ${correctPercentage}%</b><br>${correctCount}/10</p>
 `;
+
+      if (wrongCount > correctCount) {
+        console.log(wrongCount);
+        document.getElementById("cerchioStrano").innerHTML = `
+            <p>Studia capra</p>`;
+      } else {
+        console.log(correctCount);
+        document.getElementById("cerchioStrano").innerHTML = `
+            <p>Hai passato</p>`;
+      }
     </script>
   </body>
 </html>

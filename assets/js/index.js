@@ -125,6 +125,10 @@ function questionario(question) {
   updateQuestionCounter();
 }
 
+///////////////////////////////////////////////////////////////////
+
+let correctCount = 0;
+let wrongCount = 0;
 
 function calculatePercentage(count, total) {
   return (count / total) * 100;
@@ -149,6 +153,8 @@ function updateScoreCounter() {
     // salva i risultati in un "localStorage"?? che cazzo e'??? per spostarli in un altra pagina html
     localStorage.setItem("correctPercentage", correctPercentage);
     localStorage.setItem("wrongPercentage", wrongPercentage);
+    localStorage.setItem("correctCount", correctCount);
+    localStorage.setItem("wrongCount", wrongCount);
 
     window.location.href = `./results.html`;
     return;
@@ -175,19 +181,6 @@ function checkRisposta(rispostaSelezionata, rispostaGiusta) {
 
 questionario(questions[currentQuestionIndex]);
 
-////////////////////////////////////////////////////////////////////
-
-// bottone che porta alle domande
-/* document.getElementById("button").addEventListener("click", function (event) {
-  event.preventDefault();
-  const checkbox = document.getElementById("checkbox_input");
-  if (!checkbox.checked) {
-    alert("Premi il tasto stronzo");
-  } else {
-    window.location.href = "./questionario.html";
-  }
-}); */
-
 var seconds = 60;
 var anglePerSecond = 360 / seconds;
 var progressCircle = document.querySelector(".progress-circle");
@@ -210,4 +203,4 @@ var timerInterval = setInterval(function () {
     clearInterval(timerInterval);
     alert("Il tempo è scaduto!");
   }
-}, 1000);
+}, 1000); //
