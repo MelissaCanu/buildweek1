@@ -299,3 +299,7 @@ text-indent: 4.5%;
 .feedbackBtn{
   margin-bottom:6rem;
 }
+/* Aggiungi questa regola CSS per l'animazione del cerchio */
+.progress-circle {
+  transition: r 1s ease-in-out;
+}
