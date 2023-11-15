@@ -134,27 +134,18 @@ function questionario(question) {
   questionContainer.appendChild(questionElement);
   updateQuestionCounter();
 
-  // Avvia il timer per la nuova domanda
   startTimer();
 }
 
 function startTimer() {
   seconds = 60;
 
-  // Cancella l'intervallo precedente (se presente)
   clearInterval(timerInterval);
 
   timerInterval = setInterval(function () {
     seconds--;
 
     document.querySelector("text").textContent = seconds;
-
-    var newDashOffset = circleLength - dashOffsetPerSecond * (seconds - 1);
-    progressCircle.style.strokeDashoffset = newDashOffset;
-
-    // Calcola e imposta l'opacità in base al tempo rimasto
-    var opacity = seconds / 60; // da completamente opaco (1) a completamente trasparente (0)
-    progressCircle.style.strokeOpacity = opacity;
 
     if (seconds <= 0) {
       clearInterval(timerInterval);
@@ -164,7 +155,7 @@ function startTimer() {
 }
 
 function handleTimeout() {
-  checkAnswer(""); // Chiamata alla funzione per gestire la risposta quando scade il tempo
+  checkAnswer(""); 
 }
 
 function updateScoreCounter() {
@@ -179,14 +170,14 @@ function updateScoreCounter() {
     localStorage.setItem("correctCount", correctCount);
     localStorage.setItem("wrongCount", wrongCount);
 
-    clearInterval(timerInterval); // Cancella l'intervallo quando tutte le domande sono state completate
+    clearInterval(timerInterval); 
     window.location.href = `./results.html`;
     return;
   }
 }
 
 function checkAnswer(selectedAnswer, correctAnswer) {
-  clearInterval(timerInterval); // Cancella l'intervallo quando l'utente risponde a una domanda
+  clearInterval(timerInterval);
 
   if (selectedAnswer === correctAnswer) {
     correctCount++;
