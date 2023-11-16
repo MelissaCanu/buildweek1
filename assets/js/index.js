@@ -109,9 +109,9 @@ function calcolaPercentuale(count, total) {
 // Funzione per aggiornare il contatore delle domande
 function aggiornaContatoreDomande() {
   const questionCounterElement = document.getElementById("questionCounter");
-  questionCounterElement.innerHTML = `Domanda ${
+  questionCounterElement.innerHTML = `QUESTION ${
     currentQuestionIndex + 1
-  }/${totalQuestions}`;
+  }/<span class="numeroColorato">${totalQuestions}</span>`;
 }
 
 // Funzione per avviare il quiz

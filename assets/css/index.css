@@ -139,7 +139,7 @@ li {
   margin: 0 25%;
   text-align: center;
 }
-#numeroColorato {
+.numeroColorato {
   color: #d20094;
 }
 #questionCounter {
