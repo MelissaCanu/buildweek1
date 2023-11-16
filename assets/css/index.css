@@ -254,9 +254,9 @@ h1.diGravita {
   margin-right: 0.6rem
 }
 
-/* colore per le stelle all'hover del mouse */
+/* riempio anche le stelle che precedono quella su cui faccio l'hover -> si ricollega al forEach dello script di feedback.html */
 
-.star:hover path {
+.star.hovered path {
   fill: #00ffff;
 }
 
@@ -349,6 +349,8 @@ font-size: 1.4rem;
 #wrong p, #correct p{
   margin-bottom:-1.3rem;
 }
+
+/* +++++++++++++++++++++++ SEZIONE MENU' A TENDINA EASY / HARD +++++++++++++++++++++++ */
 
 .dropdown {
   position: relative;

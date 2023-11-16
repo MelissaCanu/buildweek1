@@ -121,22 +121,41 @@
       <button id="button" class="feedbackBtn" type="submit">MORE INFO</button>
     </form>
     <script>
-      // dom content loaded significa che js si implementa quando html Ã¨ caricato e renderizzato completamente
       document.addEventListener("DOMContentLoaded", function () {
+        // seleziono tutte le stelle presenti nella pagina
         const stars = document.querySelectorAll(".star");
+
         stars.forEach(function (star, index) {
+          // uso un forEach per assegnare a ogni stella un addEventListener al CLICK
           star.addEventListener("click", function () {
-            // Toggle the "selected" class for the clicked star and previous stars
             for (let i = 0; i <= index; i++) {
-              stars[i].classList.add("selected");
+              // qua attivo la classe "selected" per la stella su cui ho cliccato incluse tutte le precedenti
+              stars[i].classList.add("selected"); // la [i] dopo stars serve per accedere al singolo elemento in base al suo indice
               const pathElement = stars[i].querySelector("path");
               pathElement.setAttribute("fill", "#00ffff");
             }
-            // Unselect the stars after the clicked star
+
             for (let i = index + 1; i < stars.length; i++) {
+              // qua disattivo la classe "selected" per le stelle dopo quella su cui ho cliccato
               stars[i].classList.remove("selected");
               const pathElement = stars[i].querySelector("path");
               pathElement.setAttribute("fill", "#5f606e");
+            }
+          });
+          // ----------------- qua si chiude il forEach ---------------
+          // ----------------- qua gestisco l'hover     ---------------
+
+          star.addEventListener("mouseover", function () {
+            // qua aggiungo tramite addEventListener l'effetto HOVER delle stelle
+            stars.forEach(function (star) {
+              star.classList.remove("hovered"); // a ogni stella, rimuovo la classe precedentemente aggiunta
+            });
+
+            for (let i = 0; i <= index; i++) {
+              // qua uso i <= index -> perché "index" è l'indice della stella che sto puntando, il loop cicla da i = 0 a i <= index
+              // -> passa attraverso ogni stella dalla prima (i=0) fino a quella su cui punto
+              // sempre all'interno dell'eventListener "mouseover", decido di aggiungere la classe "hovered" alla stella su cui passo col mouse e anche alle sue precedenti
+              stars[i].classList.add("hovered");
             }
           });
         });
