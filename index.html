@@ -37,13 +37,22 @@
         </li>
         <li>This exam will take approx. <b>0-5 minutes.</b></li>
       </ul>
+
+      <div class="dropdown">
+        <button class="dropbtn">Select Difficult</button>
+        <div class="dropdown-content">
+            <a href="#" onclick="mostraBottone('button')">EASY</a>
+            <a href="#" onclick="mostraBottone('button2')">HARD</a>
+        </div>
+    </div>
+
       <form action="">
         <div id="check">
           <input type="checkbox" id="checkbox_input" required /><label for="checkbox_input"></label><b>I promise to answer myself without help from anyone</label>
         </div>
         <div>
-          <a href="./questionario.html"><button id="button" type="submit">Test 1</button></a>
-          <a href="./questionario2.html"><button id="button2" type="submit">Test 2</button></a>
+          <a href="./questionario.html"><button id="button" style="display: none;" type="submit">Easy Test</button></a>
+          <a href="./questionario2.html"><button id="button2" style="display: none;" type="submit">Hard Test</button></a>
         </div>
       </form>
     </main>
@@ -71,6 +80,20 @@
           }
         });
       });
+      var bottoneAttuale = null;
+
+function mostraBottone(idBottone) {
+    // Nascondi il bottone attualmente visibile
+    if (bottoneAttuale) {
+        document.getElementById(bottoneAttuale).style.display = 'none';
+    }
+
+    // Mostra il nuovo bottone
+    document.getElementById(idBottone).style.display = 'block';
+
+    // Aggiorna il bottone attuale
+    bottoneAttuale = idBottone;
+}
     </script>
   </body>
 </html>
