@@ -14,19 +14,37 @@
   </head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <body>
-    <img id="Logo" src="./assets/img/epicode_logo.png" alt="Logo epicode_logo" />
+    <img
+      id="Logo"
+      src="./assets/img/epicode_logo.png"
+      alt="Logo epicode_logo"
+    />
     <h1 class="diGravita title">Results</h1>
     <p class="diGravita">The summary of your answers:</p>
     <div id="resultsContainer">
       <div id="correct" class="results"></div>
-      <div id="canvasContainer" style="position: relative;">
+      <div id="canvasContainer" style="position: relative">
         <canvas id="myChart" style="width: 100%; max-width: 800px"></canvas>
-        <div id="centerText" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #ffffff; font-size: 16px; font-family: Inter, sans-serif;"></div>
+        <div
+          id="centerText"
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Inter, sans-serif;
+          "
+        ></div>
       </div>
       <div id="wrong" class="results"></div>
     </div>
     <div class="diGravita">
-      <a href="./feedback.html"><button id="rateUs" type="submit">RATE US</button></a>
+      <a href="./feedback.html"
+        ><button id="rateUs" type="submit">RATE US</button></a
+      >
     </div>
     <script>
       var correctPercentage = localStorage.getItem("correctPercentage");
@@ -71,9 +89,12 @@
 
       // Display center text over the canvas
       var centerText = document.getElementById("centerText");
-      centerText.innerHTML = correctCount >= 6 ? `<b><p>Congratulations!<p>
+      centerText.innerHTML =
+        correctCount >= 6
+          ? `<b><p>Congratulations!<p>
                                                   <p id="azzurro">You passed the exam.<p></b>
-                                                  <p class="fraCheCagaIlCazzo"> We'll send you the certificate in few minutes. Check your email (including promotions/spam folder)<p>` : `
+                                                  <p class="fraCheCagaIlCazzo"> We'll send you the certificate in few minutes. Check your email (including promotions/spam folder)<p>`
+          : `
                                                   <b><p>We're sorry!<p>
                                                   <p id="viola">You didn't pass the exam.<p></b>
                                                   <p class="fraCheCagaIlCazzo">Please get in touch with your teacher to set a new exam date.<p>`;

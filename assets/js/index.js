@@ -101,82 +101,118 @@ let wrongCount = 0;
 let seconds = 60;
 let timerInterval;
 
-function calculatePercentage(count, total) {
+// Funzione per calcolare la percentuale
+function calcolaPercentuale(count, total) {
   return (count / total) * 100;
 }
 
-function updateQuestionCounter() {
+// Funzione per aggiornare il contatore delle domande
+function aggiornaContatoreDomande() {
   const questionCounterElement = document.getElementById("questionCounter");
-  questionCounterElement.innerHTML =
-    `Question ${currentQuestionIndex + 1}` +
-    `<span id="numeroColorato">/${totalQuestions}<span>`;
+  questionCounterElement.innerHTML = `Domanda ${
+    currentQuestionIndex + 1
+  }/${totalQuestions}`;
 }
 
-function questionario(question) {
+// Funzione per avviare il quiz
+function avviaQuiz() {
+  resettaTimer();
+  resettaAnimazione();
+  gestioneDomande(questions[currentQuestionIndex]);
+  avviaTimer();
+}
+
+// Funzione per avviare il timer
+function avviaTimer() {
+  timerInterval = setInterval(function () {
+    if (seconds >= 0) {
+      aggiornaVisualizzazioneTimer();
+      aggiornaAnimazione();
+    } else {
+      clearInterval(timerInterval);
+      gestisciTimeout();
+    }
+    seconds--;
+  }, 1000);
+}
+
+// Funzione per resettare completamente il timer
+function resettaTimer() {
+  clearInterval(timerInterval);
+  seconds = 60;
+  aggiornaVisualizzazioneTimer();
+}
+
+// Funzione per aggiornare la visualizzazione del timer
+function aggiornaVisualizzazioneTimer() {
+  const timerText = document.getElementById("timerText");
+  timerText.textContent = seconds;
+}
+
+// Funzione per aggiornare l'animazione
+function aggiornaAnimazione() {
+  const progressCircle = document.getElementById("progress-circle");
+  const dashOffset = (seconds / 60) * 440;
+  progressCircle.style.strokeDashoffset = dashOffset;
+}
+
+// Funzione per resettare l'animazione
+function resettaAnimazione() {
+  const progressCircle = document.getElementById("progress-circle");
+  progressCircle.style.strokeDashoffset = 440;
+}
+
+// Funzione per gestire il timeout
+function gestisciTimeout() {
+  verificaRisposta("");
+  avviaQuiz();
+}
+
+// Funzione per gestire la visualizzazione delle domande e risposte
+function gestioneDomande(domanda) {
   const questionContainer = document.getElementById("container");
   questionContainer.innerHTML = "";
 
   const questionElement = document.createElement("div");
-  questionElement.innerHTML = `<p class="stilep">${question.question}<p>`;
+  questionElement.innerHTML = `<p class="stilep">${domanda.question}</p>`;
 
-  const domande = [...question.incorrect_answers, question.correct_answer];
-  domande.sort(() => Math.random() - 0.5);
-  domande.forEach((risposta) => {
+  const risposte = [...domanda.incorrect_answers, domanda.correct_answer];
+  risposte.sort(() => Math.random() - 0.5);
+
+  risposte.forEach((risposta) => {
     const button = document.createElement("button");
     button.classList.add("stileBottoni");
     button.textContent = risposta;
     button.addEventListener("click", () =>
-      checkAnswer(risposta, question.correct_answer),
+      verificaRisposta(risposta, domanda.correct_answer)
     );
     questionElement.appendChild(button);
   });
 
   questionContainer.appendChild(questionElement);
-  updateQuestionCounter();
-
-  startTimer();
+  aggiornaContatoreDomande();
 }
 
-function startTimer() {
-  seconds = 60;
-
-  clearInterval(timerInterval);
-
-  timerInterval = setInterval(function () {
-    seconds--;
-
-    document.querySelector("text").textContent = seconds;
-
-    if (seconds <= 0) {
-      clearInterval(timerInterval);
-      handleTimeout();
-    }
-  }, 1000);
-}
-
-function handleTimeout() {
-  checkAnswer(""); 
-}
-
-function updateScoreCounter() {
+// Funzione per aggiornare il contatore dei punteggi
+function aggiornaContatorePunteggi() {
   const scoreCounterElement = document.getElementById("scoreCounter");
 
-  const correctPercentage = calculatePercentage(correctCount, totalQuestions);
-  const wrongPercentage = calculatePercentage(wrongCount, totalQuestions);
+  const percentualeCorrette = calcolaPercentuale(correctCount, totalQuestions);
+  const percentualeErrate = calcolaPercentuale(wrongCount, totalQuestions);
 
   if (currentQuestionIndex === questions.length) {
-    localStorage.setItem("correctPercentage", correctPercentage);
-    localStorage.setItem("wrongPercentage", wrongPercentage);
-    localStorage.setItem("correctCount", correctCount);
-    localStorage.setItem("wrongCount", wrongCount);
+    localStorage.setItem("percentualeCorrette", percentualeCorrette);
+    localStorage.setItem("percentualeErrate", percentualeErrate);
+    localStorage.setItem("conteggioCorrette", correctCount);
+    localStorage.setItem("conteggioErrate", wrongCount);
 
-    clearInterval(timerInterval); 
+    clearInterval(timerInterval);
     window.location.href = `./results.html`;
-    return;
   }
 }
 
-function checkAnswer(selectedAnswer, correctAnswer) {
+// Funzione per verificare la risposta
+function verificaRisposta(rispostaSelezionata, rispostaCorretta) {
   clearInterval(timerInterval);
 
   const feedbackContainer = document.getElementById("feedbackContainer");
@@ -184,13 +220,14 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 
   const feedbackElement = document.createElement("div");
 
-  if (selectedAnswer === correctAnswer) {
-    feedbackElement.textContent = "Correct answer!",
-    feedbackElement.classList.add("correct-feedback"),
+  if (rispostaSelezionata === rispostaCorretta) {
+    feedbackElement.textContent = "Risposta corretta!";
+    feedbackElement.classList.add("correct-feedback");
     correctCount++;
   } else {
-    feedbackElement.textContent = "Wrong answer. The correct answer was: " + correctAnswer,
-    feedbackElement.classList.add("wrong-feedback"),
+    feedbackElement.textContent =
+      "Risposta sbagliata. La risposta corretta era: " + rispostaCorretta;
+    feedbackElement.classList.add("wrong-feedback");
     wrongCount++;
   }
 
@@ -199,25 +236,31 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   currentQuestionIndex++;
 
   if (currentQuestionIndex < questions.length) {
-    questionario(questions[currentQuestionIndex]);
+    avviaQuiz();
   } else {
-    updateScoreCounter();
-    window.location.href = "./results.html";
+    aggiornaContatorePunteggi();
+    window.location.href = "./risultati.html";
   }
-  updateScoreCounter();
+  aggiornaContatorePunteggi();
 }
 
-questionario(questions[currentQuestionIndex]);
+// Avvia il quiz quando la pagina è completamente caricata
+document.addEventListener("DOMContentLoaded", avviaQuiz);
 
+ // Gestisce l'evento mouseout per prevenire il barare
 const quizPageElement = document.getElementById("quizPage");
-/*
 if (quizPageElement) {
   window.addEventListener("mouseout", function (event) {
     const from = event.relatedTarget || event.toElement;
 
-if (!from || (event.clientY <= 0 || event.clientX <= 0 || event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
-    alert("We merdina non barare, ti osservo :)");
-  }
- });
-}
-*/
+    if (
+      !from ||
+      event.clientY <= 0 ||
+      event.clientX <= 0 ||
+      event.clientX >= window.innerWidth ||
+      event.clientY >= window.innerHeight
+    ) {
+      alert("Non barare, ti stiamo osservando :)");
+    }
+  });
+} 
