@@ -111,7 +111,7 @@ function aggiornaContatoreDomande() {
   const questionCounterElement = document.getElementById("questionCounter");
   questionCounterElement.innerHTML = `QUESTION ${
     currentQuestionIndex + 1
-  }/<span class="numeroColorato">${totalQuestions}</span>`;
+  }<span class="numeroColorato"> / ${totalQuestions}</span>`;;
 }
 
 // Funzione per avviare il quiz
@@ -221,12 +221,12 @@ function verificaRisposta(rispostaSelezionata, rispostaCorretta) {
   const feedbackElement = document.createElement("div");
 
   if (rispostaSelezionata === rispostaCorretta) {
-    feedbackElement.textContent = "Risposta corretta!";
+    feedbackElement.textContent = "Correct Answer!";
     feedbackElement.classList.add("correct-feedback");
     correctCount++;
   } else {
     feedbackElement.textContent =
-      "Risposta sbagliata. La risposta corretta era: " + rispostaCorretta;
+      "Wrong answer, the correct one is: " + rispostaCorretta;
     feedbackElement.classList.add("wrong-feedback");
     wrongCount++;
   }
