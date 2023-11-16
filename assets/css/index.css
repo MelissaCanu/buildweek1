@@ -59,6 +59,9 @@ h1 span {
   display: flex;
   justify-content: space-between;
 }
+#timerText {
+  fill: white;
+}
 /*+++++++++++++++++ LISTA ++++++++++++++++++++++*/
 ul {
   margin-top: 2.5rem;
@@ -121,6 +124,7 @@ li {
     rgba(119, 1, 93, 1) 0%,
     rgba(210, 0, 148, 1) 100%
   );
+  border: 2px solid rgba(210, 0, 148, 1);
 }
 /*+++++++++++++++++++ DOMANDE +++++++++++++++++++++*/
 .stilep {
@@ -301,9 +305,15 @@ text-indent: 4.5%;
   margin-bottom:6rem;
 }
 /* Aggiungi questa regola CSS per l'animazione del cerchio */
+.circle-container {
+  position: relative;
+}
+
 .progress-circle {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transform: rotate(-90deg); /* Aggiunto per far partire l'animazione da 0° */
+  transform-origin: 50% 50%; /* Aggiunto per far partire l'animazione dal centro del cerchio */
   transition: stroke-dashoffset 1s linear;
 }
 .correct-feedback {
@@ -317,13 +327,4 @@ text-indent: 4.5%;
 #feedbackContainer{
   text-align: center;
   margin-top: 2em;
-}
-.fraCheCagaIlCazzo{
-  color: rgba(255, 255, 255, 0.623);
-}
-#azzurro{
-  color: #00ffff;
-}
-#viola{
-  color: #d20094;
 }
