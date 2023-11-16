@@ -42,7 +42,8 @@
           <input type="checkbox" id="checkbox_input" required /><label for="checkbox_input"></label><b>I promise to answer myself without help from anyone</label>
         </div>
         <div>
-          <a href="./questionario.html"><button id="button" type="submit">PROCEED</button></a>
+          <a href="./questionario.html"><button id="button" type="submit">Test 1</button></a>
+          <a href="./questionario2.html"><button id="button2" type="submit">Test 2</button></a>
         </div>
       </form>
     </main>
@@ -56,6 +57,17 @@
             alert("Premi il tasto stronzo");
           } else {
             window.location.href = "./questionario.html";
+          }
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("button2").addEventListener("click", function (event) {
+          event.preventDefault();
+          const checkbox = document.getElementById("checkbox_input");
+          if (!checkbox.checked) {
+            alert("Premi il tasto stronzo");
+          } else {
+            window.location.href = "./questionario2.html";
           }
         });
       });

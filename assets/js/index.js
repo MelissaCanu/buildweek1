@@ -138,7 +138,7 @@ function questionario(question) {
 }
 
 function startTimer() {
-  seconds = 6;
+  seconds = 60;
 
   clearInterval(timerInterval);
 
