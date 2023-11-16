@@ -47,16 +47,18 @@
       </form>
     </main>
     <script>
-      // bottone che porta alle domande
-  document.getElementById("button").addEventListener("click", function (event) {
-  event.preventDefault();
-  const checkbox = document.getElementById("checkbox_input");
-  if (!checkbox.checked) {
-    alert("Premi il tasto stronzo");
-  } else {
-    window.location.href = "./questionario.html";
-  }
-}); 
+      // Bottone che porta alle domande e controlla la checkbox
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("button").addEventListener("click", function (event) {
+          event.preventDefault();
+          const checkbox = document.getElementById("checkbox_input");
+          if (!checkbox.checked) {
+            alert("Premi il tasto stronzo");
+          } else {
+            window.location.href = "./questionario.html";
+          }
+        });
+      });
     </script>
   </body>
 </html>

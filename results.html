@@ -35,7 +35,7 @@
       var wrongCount = localStorage.getItem("wrongCount");
 
       var xValues = ["WRONG", "CORRECT"];
-      var yValues = [wrongCount, correctCount];
+      var yValues = [parseInt(wrongCount), parseInt(correctCount)];
       var barColors = ["#c2128d", "#00ffff"];
 
       var ctx = document.getElementById("myChart").getContext("2d");
