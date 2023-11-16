@@ -5,11 +5,7 @@ const questions = [
     difficulty: "easy",
     question: "What does CPU stand for?",
     correct_answer: "Central Processing Unit",
-    incorrect_answers: [
-      "Central Process Unit",
-      "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
+    incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
   },
   {
     category: "Science: Computers",
@@ -32,8 +28,7 @@ const questions = [
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
-    question:
-      "Pointers were not used in the original C programming language; they were added later on in C++.",
+    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },
@@ -41,8 +36,7 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question:
-      "What is the most preferred image format used for logos in the Wikimedia database?",
+    question: "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
     incorrect_answers: [".png", ".jpeg", ".gif"],
   },
@@ -52,18 +46,13 @@ const questions = [
     difficulty: "easy",
     question: "In web design, what does CSS stand for?",
     correct_answer: "Cascading Style Sheet",
-    incorrect_answers: [
-      "Counter Strike: Source",
-      "Corrective Style Sheet",
-      "Computer Style Sheet",
-    ],
+    incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question:
-      "What is the code name for the mobile operating system Android 7.0?",
+    question: "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
     incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
@@ -87,8 +76,7 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question:
-      "Which programming language shares its name with an island in Indonesia?",
+    question: "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
@@ -108,37 +96,56 @@ function calculatePercentage(count, total) {
 function updateQuestionCounter() {
   const questionCounterElement = document.getElementById("questionCounter");
   questionCounterElement.innerHTML =
-    `Question ${currentQuestionIndex + 1}` +
-    `<span id="numeroColorato">/${totalQuestions}<span>`;
+    `Question ${currentQuestionIndex + 1}` + `<span id="numeroColorato">/${totalQuestions}<span>`;
 }
 
 function questionario(question) {
+  // Get the container where the question and answers will be displayed
   const questionContainer = document.getElementById("container");
+  // Clear any existing content in the container
   questionContainer.innerHTML = "";
 
+  // Create a div element to hold the question text
   const questionElement = document.createElement("div");
-  questionElement.innerHTML = `<p class="stilep">${question.question}<p>`;
+  questionElement.innerHTML = `<p class="stilep">${question.question}</p>`;
 
+  // Combine incorrect and correct answers, then shuffle them randomly
   const domande = [...question.incorrect_answers, question.correct_answer];
   domande.sort(() => Math.random() - 0.5);
-  domande.forEach((risposta) => {
-    const button = document.createElement("button");
-    button.classList.add("stileBottoni");
-    button.textContent = risposta;
-    button.addEventListener("click", () =>
-      checkAnswer(risposta, question.correct_answer),
-    );
-    questionElement.appendChild(button);
-  });
 
+  // Loop through the answers and create buttons for each
+  for (let i = 0; i < domande.length; i++) {
+    // Create a button element
+    const button = document.createElement("button");
+    // Add the styling class to the button
+    button.classList.add("stileBottoni");
+    // Set the button text to the current answer
+    button.textContent = domande[i];
+    // Attach a click event listener to check the answer
+    button.addEventListener("click", () => checkAnswer(domande[i], question.correct_answer));
+    // Append the button to the questionElement
+    questionElement.appendChild(button);
+
+    // Check if it's the second button (even index) to add a line break
+    if ((i + 1) % 2 === 0) {
+      // For every second button, create a new line
+      const lineBreak = document.createElement("br");
+      questionElement.appendChild(lineBreak);
+    }
+  }
+
+  // Append the questionElement to the questionContainer
   questionContainer.appendChild(questionElement);
+
+  // Update the question counter display
   updateQuestionCounter();
 
+  // Start the timer for the question
   startTimer();
 }
 
 function startTimer() {
-  seconds = 6;
+  seconds = 60;
 
   clearInterval(timerInterval);
 
@@ -155,7 +162,7 @@ function startTimer() {
 }
 
 function handleTimeout() {
-  checkAnswer(""); 
+  checkAnswer("");
 }
 
 function updateScoreCounter() {
@@ -170,7 +177,7 @@ function updateScoreCounter() {
     localStorage.setItem("correctCount", correctCount);
     localStorage.setItem("wrongCount", wrongCount);
 
-    clearInterval(timerInterval); 
+    clearInterval(timerInterval);
     window.location.href = `./results.html`;
     return;
   }
@@ -185,13 +192,13 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   const feedbackElement = document.createElement("div");
 
   if (selectedAnswer === correctAnswer) {
-    feedbackElement.textContent = "Correct answer!",
-    feedbackElement.classList.add("correct-feedback"),
-    correctCount++;
+    (feedbackElement.textContent = "Correct answer!"),
+      feedbackElement.classList.add("correct-feedback"),
+      correctCount++;
   } else {
-    feedbackElement.textContent = "Wrong answer. The correct answer was: " + correctAnswer,
-    feedbackElement.classList.add("wrong-feedback"),
-    wrongCount++;
+    (feedbackElement.textContent = "Wrong answer. The correct answer was: " + correctAnswer),
+      feedbackElement.classList.add("wrong-feedback"),
+      wrongCount++;
   }
 
   feedbackContainer.appendChild(feedbackElement);
@@ -210,14 +217,19 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 questionario(questions[currentQuestionIndex]);
 
 const quizPageElement = document.getElementById("quizPage");
-/*
+
 if (quizPageElement) {
   window.addEventListener("mouseout", function (event) {
     const from = event.relatedTarget || event.toElement;
 
-if (!from || (event.clientY <= 0 || event.clientX <= 0 || event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
-    alert("We merdina non barare, ti osservo :)");
-  }
- });
+    if (
+      !from ||
+      event.clientY <= 0 ||
+      event.clientX <= 0 ||
+      event.clientX >= window.innerWidth ||
+      event.clientY >= window.innerHeight
+    ) {
+      // alert("We merdina non barare, ti osservo :)");
+    }
+  });
 }
-*/
