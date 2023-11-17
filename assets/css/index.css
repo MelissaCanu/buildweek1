@@ -1,28 +1,43 @@
 /*+++++++++++++++++ IMPOSTAZIONI GENERALI ++++++++++++++++++++++*/
 
 body {
-  background-image: url("../img/bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   color: white;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   margin: 0 8rem 5rem 8rem;
+  background: rgb(12,17,59);
+  background: linear-gradient(306deg, rgba(12,17,59,1) 8%, rgba(96,35,101,1) 14%, rgba(96,35,101,1) 20%, rgba(69,30,88,1) 23%, rgba(96,35,101,1) 25%, rgba(96,35,101,1) 31%, rgba(69,30,88,1) 33%, rgba(96,35,101,1) 36%, rgba(96,35,101,1) 42%, rgba(69,30,88,1) 45%, rgba(24,20,65,1) 48%);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1 {
   font-size:60px;
 }
 
-@media (max-width: 1024px) {
+#container {
+  text-align: center;
+  margin: 0 10%;
+ }
+
+/* Media query per schermi di dimensioni comprese tra 720px e 1080px */
+@media (min-width: 720px) and (max-width: 1080px) {
   #container {
-    margin: 0 10rem; /* Adjust the margin as needed for smaller screens */
+    margin: 0 5%;
   }
 }
 
-@media (min-width: 1440px) {
+/* Media query per schermi di dimensioni comprese tra 1080px e 1440px */
+@media (min-width: 1080px) and (max-width: 1440px) {
   #container {
-    margin: 0 30rem; /* Adjust the margin as needed for larger screens */
+    margin: 0 10%;
+  }
+}
+
+/* Media query per schermi di dimensioni comprese tra 1440px e 2160px */
+@media (min-width: 1440px) and (max-width: 2160px) {
+  #container {
+    margin: 0 15%;
   }
 }
 
@@ -65,7 +80,9 @@ h1 span {
 ul {
   margin-top: 2.5rem;
   margin-left: -1rem;
+  margin-bottom: 4rem;
 }
+
 li {
   line-height: 1.8rem;
 }
@@ -85,7 +102,6 @@ li {
   font-size: 1.4rem;
   font-weight: bold;
   color: white;
-  margin-top: 3em;
 }
 
 #button, #button2 {
@@ -158,9 +174,6 @@ li {
   font-family: "Outfit", sans-serif;
 }
 
-#container {
- text-align: center;
-}
 .numeroColorato {
   color: #d20094;
 }
