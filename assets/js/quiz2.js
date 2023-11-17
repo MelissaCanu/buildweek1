@@ -12,13 +12,13 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question:
-      "Come si risponde a dei testimoni di Geova che ti stanno citofonando",
+      "Come ci si giustifica quando il corso Epicode ti va male?",
     correct_answer:
-      "Dai direttamente fuoco alla casa perche' ormai sanno dove abiti",
+      "Ho un giardino",
     incorrect_answers: [
-      "Sono Ateo",
-      "Non mi piace Geova",
-      "Gli butti in testa il secchio del'umido",
+      "Mi impegnero' di piu'",
+      "E' colpa di javascript",
+      "Nel dubbio gioco a Poker",
     ],
   },
   {
@@ -51,14 +51,14 @@ const questions = [
     difficulty: "easy",
     question: "Dove e' nato Sanam?",
     correct_answer:
-      "L'ha generato il male in persona per disturbare la quiete pubblica",
+      "L'ha generato il male in persona",
     incorrect_answers: ["Africa", "India", "Boh, e' spuntato cosi a caso"],
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "Fra lobbia fa parte di quale lobby?",
+    question: "Fra lobbia fa parte di quale lobbia?",
     correct_answer: "Gattari",
     incorrect_answers: ["Ku Klux Klan", "Apple-Fag", "Illuminati"],
   },
@@ -66,17 +66,17 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "Quante lauree ha Giovanazzi",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
+    question: "Quante lauree ha Valerio Casadei?",
+    correct_answer: "Infinite",
+    incorrect_answers: ["Troppe", "Poche", "Nessuna"],
   },
   {
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
     question: "Javascript e' la cosa piu' facile del mondo",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
+    correct_answer: "Vero",
+    incorrect_answers: ["Falso"],
   },
   {
     category: "Science: Computers",
