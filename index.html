@@ -39,7 +39,7 @@
         </li>
         <li>This exam will take approx. <b>0-5 minutes.</b></li>
       </ul>
-
+<!-- Qui abbiamo creato un menu a scomparsa che ci permette di selezionare quale questionario vogliamo effettuare -->
       <div class="dropdown">
         <button class="dropbtn">Select Difficulty</button>
         <div class="dropdown-content">
@@ -47,7 +47,7 @@
             <a href="#" onclick="mostraBottone('button2')">HARD</a>
         </div>
     </div>
-
+<!-- Qui abbiamo aggiunto una checkbox che manda un alert e non permette di proseguire se non viene checkata -->
       <form action="">
         <div id="check">
           <input type="checkbox" id="checkbox_input" required /><label for="checkbox_input"></label><b>I promise to answer myself without help from anyone</label>
@@ -59,7 +59,7 @@
       </form>
     </main>
     <script>
-      // Bottone che porta alle domande e controlla la checkbox
+      // Funzioni che portano alle domande e controllano le checkbox
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("button").addEventListener("click", function (event) {
           event.preventDefault();
@@ -83,17 +83,13 @@
         });
       });
       var bottoneAttuale = null;
-
+// questa e' una funzione che nasconde i bottoni per i test e ne fa apparire a schermo solo uno per volta
 function mostraBottone(idBottone) {
-    // Nascondi il bottone attualmente visibile
     if (bottoneAttuale) {
         document.getElementById(bottoneAttuale).style.display = 'none';
     }
-
-    // Mostra il nuovo bottone
     document.getElementById(idBottone).style.display = 'block';
 
-    // Aggiorna il bottone attuale
     bottoneAttuale = idBottone;
 }
     </script>

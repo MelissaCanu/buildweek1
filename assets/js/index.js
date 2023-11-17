@@ -101,7 +101,7 @@ let wrongCount = 0;
 let seconds = 60;
 let timerInterval;
 
-// Calcola la percentuale
+// Calcola la percentuale in base alle risposte
 function calculatePercentage(count, total) {
   return (count / total) * 100;
 }
@@ -168,7 +168,7 @@ function handleTimeout() {
   startQuiz();
 }
 
-// Visualizza le domande
+// Visualizza le domande 
 function displayQuestions(question) {
   const questionContainer = document.getElementById("container");
   questionContainer.innerHTML = "";

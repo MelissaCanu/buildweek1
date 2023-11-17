@@ -24,6 +24,7 @@
     <div id="resultsContainer">
       <div id="correct" class="results"></div>
       <div id="canvasContainer" style="position: relative">
+        <!-- Contenitore della torta -->
         <canvas id="myChart" style="width: 100%; max-width: 800px"></canvas>
         <div
           id="centerText"
@@ -47,6 +48,7 @@
       >
     </div>
     <script>
+      
       var correctPercentage = localStorage.getItem("correctPercentage");
       var wrongPercentage = localStorage.getItem("wrongPercentage");
       var correctCount = localStorage.getItem("correctCount");
@@ -60,6 +62,7 @@
       ctx.canvas.width = 400; // larghezza della torta!!
       ctx.canvas.height = 400; // altezza della torta!!
 
+      // Qui creiamo la torta
       new Chart(ctx, {
         type: "doughnut",
         data: {
@@ -81,7 +84,7 @@
           },
         },
       });
-
+      // Qui stampiamo le percentuali del test 
       document.getElementById("wrong").innerHTML = `
         <p>Wrong<br> <b>${wrongPercentage}%</b><br></p>
         <span class="domandeSuDieci">${wrongCount}/10 questions</span>
@@ -91,7 +94,7 @@
         <span class="domandeSuDieci">${correctCount}/10 questions</span>
       `;
 
-      // Display center text over the canvas
+      // Funzione per far comparire un messaggio diverso all'interno della torta in base alle risposte 
       var centerText = document.getElementById("centerText");
       centerText.innerHTML =
         correctCount >= 6
