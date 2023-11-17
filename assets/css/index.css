@@ -20,27 +20,6 @@ h1 {
   margin: 0 10%;
  }
 
-/* Media query per schermi di dimensioni comprese tra 720px e 1080px */
-@media (min-width: 720px) and (max-width: 1080px) {
-  #container {
-    margin: 0 5%;
-  }
-}
-
-/* Media query per schermi di dimensioni comprese tra 1080px e 1440px */
-@media (min-width: 1080px) and (max-width: 1440px) {
-  #container {
-    margin: 0 10%;
-  }
-}
-
-/* Media query per schermi di dimensioni comprese tra 1440px e 2160px */
-@media (min-width: 1440px) and (max-width: 2160px) {
-  #container {
-    margin: 0 15%;
-  }
-}
-
 /*++++++++++++++++ HEADER +++++++++++++++++++++++*/
 .title {
   font-size: 6em; 
