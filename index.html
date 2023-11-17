@@ -71,6 +71,9 @@
           }
         });
       });
+
+    // stessa funzione per il secondo quiz 
+
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("button2").addEventListener("click", function (event) {
           event.preventDefault();
@@ -83,6 +86,7 @@
         });
       });
       var bottoneAttuale = null;
+      
 // questa e' una funzione che nasconde i bottoni per i test e ne fa apparire a schermo solo uno per volta
 function mostraBottone(idBottone) {
     if (bottoneAttuale) {

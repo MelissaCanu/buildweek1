@@ -233,7 +233,7 @@ input[type="checkbox"]:checked + label:before {
 
 }
 .results {
-  font-size: 3.5rem; /* Changed from 3.5em */
+  font-size: 3.5rem; 
 }
  #correct {
   text-align: left;
@@ -242,7 +242,7 @@ input[type="checkbox"]:checked + label:before {
   text-align: right;
  }
 p.diGravita {
-  font-size: 2rem; /* Changed from 2em */
+  font-size: 2rem;
   margin-top: 5px;
 }
 
@@ -280,7 +280,8 @@ h1.diGravita {
 }
 
 #star-container .star {
-  margin-right: 0.6rem
+  margin-right: 0.6rem;
+  cursor: pointer;
 }
 
 /* riempio anche le stelle che precedono quella su cui faccio l'hover -> si ricollega al forEach dello script di feedback.html */
@@ -328,7 +329,8 @@ text-indent: 4.5%;
 .feedbackBtn{
   margin-bottom:6rem;
 }
-/* Aggiungi questa regola CSS per l'animazione del cerchio */
+
+/* Animazione del cerchio */
 .circle-container {
   position: relative;
 }
