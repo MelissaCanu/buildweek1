@@ -226,7 +226,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
     correctCount++;
   } else {
     feedbackElement.textContent =
-      "Wrong answer, the correct one is: " + correctAnswer;
+      "Wrong answer!";
     feedbackElement.classList.add("wrong-feedback");
     wrongCount++;
   }
@@ -247,7 +247,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 // Avvia il quiz quando la pagina è completamente caricata
 document.addEventListener("DOMContentLoaded", startQuiz);
 
-/* Gestisce l'evento mouseout per prevenire il barare
+// Gestisce l'evento mouseout per prevenire il barare
 const quizPageElement = document.getElementById("quizPage");
 if (quizPageElement) {
   window.addEventListener("mouseout", function (event) {
@@ -260,7 +260,7 @@ if (quizPageElement) {
       event.clientX >= window.innerWidth ||
       event.clientY >= window.innerHeight
     ) {
-      alert("Non barare, ti stiamo osservando :)");
+      alert("Don't cheat, we're watching you :)");
     }
   });
-} */
+} 

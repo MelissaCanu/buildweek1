@@ -14,11 +14,11 @@
   </head>
   <body>
     <div class="logoDiv">
-    <img
+    <a href="https://epicode.com/it/"><img
       id="Logo"
       src="./assets/img/epicode_logo.png"
       alt="Logo epicode_logo"
-    />
+    /></a>
   </div>
     <header>
       <h1 class="title"><span>Welcome to</span><br />your exam</h1>
@@ -65,7 +65,7 @@
           event.preventDefault();
           const checkbox = document.getElementById("checkbox_input");
           if (!checkbox.checked) {
-            alert("Premi il tasto stronzo");
+            alert("Make sure the checkbox is selected");
           } else {
             window.location.href = "./questionario.html";
           }
@@ -76,7 +76,7 @@
           event.preventDefault();
           const checkbox = document.getElementById("checkbox_input");
           if (!checkbox.checked) {
-            alert("Premi il tasto stronzo");
+            alert("Make sure the checkbox is selected");
           } else {
             window.location.href = "./questionario2.html";
           }

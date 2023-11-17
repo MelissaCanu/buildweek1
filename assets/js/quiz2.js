@@ -216,12 +216,12 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   const feedbackElement = document.createElement("div");
 
   if (selectedAnswer === correctAnswer) {
-    feedbackElement.textContent = "Correct Answer!";
+    feedbackElement.textContent = "Risposta corretta!";
     feedbackElement.classList.add("correct-feedback");
     correctCount++;
   } else {
     feedbackElement.textContent =
-      "Wrong answer, the correct one is: " + correctAnswer;
+      "Riposta sbagliata, ASSHOLE";
     feedbackElement.classList.add("wrong-feedback");
     wrongCount++;
   }
